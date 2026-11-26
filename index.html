@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AETHERIA QUANTUM | Infraestructura Global de Liquidez e Inteligencia Soberana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#050608',
+                        surface: '#0C0F14',
+                        panel: '#12161F',
+                        gold: '#D4AF37',
+                        goldLight: '#F3E5AB',
+                        emerald: '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050608;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(18, 22, 31, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #997A15 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .grid-bg {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.9; }
+        }
+        .animate-pulse-slow {
+            animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-gold selection:text-obsidian">
+
+    <!-- TICKER SUPERIOR DE LIQUIDEZ GLOBAL EN TIEMPO REAL -->
+    <div class="bg-surface border-b border-white/10 py-2 px-4 text-xs font-mono text-gray-400 flex justify-between items-center overflow-hidden">
+        <div class="flex items-center space-x-6 whitespace-nowrap">
+            <span class="flex items-center text-emerald">
+                <span class="w-2 h-2 rounded-full bg-emerald mr-2 animate-ping"></span>
+                NODO CENTRAL ACTIVO (LATENCIA: 0.04ms)
+            </span>
+            <span>VOLUMEN LIQUIDADO 24H: <strong class="text-white" id="ticker-vol">$48,920,410,900</strong></span>
+            <span>TARIFA DE EXTRACCIÓN (0.15%): <strong class="text-gold" id="ticker-rev">$73,380,616</strong></span>
+            <span class="hidden md:inline">BANCOS CENTRALES CONECTADOS: <strong class="text-white">42</strong></span>
+        </div>
+        <div class="hidden lg:block text-gold/80">
+            SISTEMA DE COMPENSACIÓN SOBERANA v9.4
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-gradient-to-tr from-gold to-goldLight flex items-center justify-center text-obsidian font-bold font-mono text-lg">
+                    Æ
+                </div>
+                <span class="font-semibold tracking-wider text-lg text-white">AETHERIA <span class="text-xs font-mono text-gold ml-1">QUANTUM</span></span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm text-gray-400">
+                <a href="#arquitectura" class="hover:text-white transition">Arquitectura</a>
+                <a href="#simulador" class="hover:text-white transition">Simulador Institucional</a>
+                <a href="#infraestructura" class="hover:text-white transition">Cámara de Compensación</a>
+            </div>
+            <div>
+                <button onclick="openModal()" class="bg-white text-obsidian hover:bg-goldLight font-medium text-sm px-5 py-2.5 rounded transition duration-200 shadow-lg shadow-white/5">
+                    Acceso Institucional
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative grid-bg pt-24 pb-32 border-b border-white/5 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gold/10 blur-[150px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-gold mb-8">
+                <span>CAPA 0 DE LIQUIDACIÓN FINANCIERA Y COMPUTACIÓN SOBERANA</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white max-w-4xl mx-auto leading-[1.1] mb-6">
+                El sistema nervioso central del <span class="gold-gradient-text">capital global.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light mb-12 leading-relaxed">
+                Aetheria reemplaza los rieles bancarios heredados y los mercados de derivados fragmentados con un motor de compensación cuántica instantánea. Capturamos 15 puntos básicos sobre el flujo mundial de capitales.
+            </p>
+
+            <!-- CONTADOR EN VIVO DE PROYECCIÓN DE INGRESOS -->
+            <div class="max-w-3xl mx-auto glass-panel rounded-2xl p-8 border border-gold/20 shadow-2xl">
+                <div class="text-xs font-mono uppercase tracking-widest text-gray-400 mb-2">
+                    Ingresos Netos Generados en el Ciclo Mensual Actual
+                </div>
+                <div class="text-4xl md:text-6xl font-mono font-bold text-white tracking-tight mb-4" id="live-revenue">
+                    $1,042,890,412.80
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-mono text-gray-400 border-t border-white/10 pt-4">
+                    <div>TASA DE EXTRACCIÓN: <span class="text-emerald">0.15% FLAT</span></div>
+                    <div>MARGEN OPERATIVO: <span class="text-emerald">99.4%</span></div>
+                    <div>CUSTODIA ACTIVA: <span class="text-white">$14.2 TRILLONES</span></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ARQUITECTURA DE MONETIZACIÓN (LOS 3 PILARES DE $1B+/MES) -->
+    <section id="arquitectura" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">Mecánica de Captura de Valor</h2>
+            <p class="text-gray-400 max-w-2xl">Un monopolio natural de infraestructura diseñado para operar como un impuesto invisible y obligatorio sobre la eficiencia financiera global.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Pilar 1 -->
+            <div class="glass-panel p-8 rounded-xl border border-white/10 hover:border-gold/40 transition">
+                <div class="text-gold font-mono text-sm mb-4">01 / PEAJES DE LIQUIDEZ</div>
+                <h3 class="text-xl font-semibold text-white mb-3">Liquidación Atómica Transfronteriza</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    Sustituye SWIFT y cámaras de compensación con liquidación T+0 sin riesgo de contraparte. Cobramos 15 puntos básicos (0.15%) por transacción institucional.
+                </p>
+                <div class="border-t border-white/10 pt-4 font-mono text-xs flex justify-between">
+                    <span class="text-gray-500">APORTE MENSUAL:</span>
+                    <span class="text-white font-bold">$540,000,000</span>
+                </div>
+            </div>
+
+            <!-- Pilar 2 -->
+            <div class="glass-panel p-8 rounded-xl border border-white/10 hover:border-gold/40 transition">
+                <div class="text-gold font-mono text-sm mb-4">02 / ORÁCULO DE RIESGO</div>
+                <h3 class="text-xl font-semibold text-white mb-3">Predicción de Solvencia y Arbitraje</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    Licenciamiento exclusivo de API para los 100 fondos soberanos y bancos sistémicos más grandes del mundo. Suscripción base de $3.5M/mes por entidad.
+                </p>
+                <div class="border-t border-white/10 pt-4 font-mono text-xs flex justify-between">
+                    <span class="text-gray-500">APORTE MENSUAL:</span>
+                    <span class="text-white font-bold">$350,000,000</span>
+                </div>
+            </div>
+
+            <!-- Pilar 3 -->
+            <div class="glass-panel p-8 rounded-xl border border-white/10 hover:border-gold/40 transition">
+                <div class="text-gold font-mono text-sm mb-4">03 / CUSTODIA SINTÉTICA</div>
+                <h3 class="text-xl font-semibold text-white mb-3">Emisión de Bonos y Colateral Programable</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                    Tokenización nativa de deuda soberana y materias primas. Retención de 10 puntos básicos anuales sobre activos bajo gestión automatizada.
+                </p>
+                <div class="border-t border-white/10 pt-4 font-mono text-xs flex justify-between">
+                    <span class="text-gray-500">APORTE MENSUAL:</span>
+                    <span class="text-white font-bold">$210,000,000</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIMULADOR INTERACTIVO DE INGRESOS Y VOLUMEN -->
+    <section id="simulador" class="py-24 bg-surface border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <div class="text-xs font-mono text-gold mb-2">MODELO ECONOMÉTRICO EN VIVO</div>
+                    <h2 class="text-3xl font-bold text-white mb-4">Simulador de Escala Institucional</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                        Ajusta la cuota de captura del mercado global de divisas y derivados (mercado diario de $7.5 trillones) y el número de nodos institucionales conectados para verificar la generación de flujo de caja libre.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-2">
+                                <span class="text-gray-400">VOLUMEN GLOBAL PROCESADO / DÍA</span>
+                                <span class="text-gold font-bold" id="val-vol">$15,000 Millones</span>
+                            </div>
+                            <input type="range" id="slider-vol" min="5" max="100" value="15" class="w-full accent-gold bg-panel h-2 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-2">
+                                <span class="text-gray-400">COMISIÓN DE RED (PUNTOS BÁSICOS)</span>
+                                <span class="text-gold font-bold" id="val-bps">15 bps (0.15%)</span>
+                            </div>
+                            <input type="range" id="slider-bps" min="5" max="50" value="15" class="w-full accent-gold bg-panel h-2 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-2">
+                                <span class="text-gray-400">INSTITUCIONES TIER-1 LICENCIADAS ($3.5M/MES)</span>
+                                <span class="text-gold font-bold" id="val-inst">100 Entidades</span>
+                            </div>
+                            <input type="range" id="slider-inst" min="20" max="250" value="100" class="w-full accent-gold bg-panel h-2 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="glass-panel p-8 md:p-10 rounded-2xl border border-white/10">
+                        <div class="grid sm:grid-cols-2 gap-6 mb-8">
+                            <div class="bg-obsidian/80 p-6 rounded-xl border border-white/5">
+                                <div class="text-xs font-mono text-gray-500 mb-1">INGRESO MENSUAL POR TRANSACCIONES</div>
+                                <div class="text-2xl md:text-3xl font-mono font-bold text-white" id="out-tx-rev">$675,000,000</div>
+                            </div>
+                            <div class="bg-obsidian/80 p-6 rounded-xl border border-white/5">
+                                <div class="text-xs font-mono text-gray-500 mb-1">INGRESO MENSUAL POR LICENCIAS SAAS</div>
+                                <div class="text-2xl md:text-3xl font-mono font-bold text-white" id="out-saas-rev">$350,000,000</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-panel to-obsidian p-8 rounded-xl border border-gold/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div>
+                                <div class="text-xs font-mono text-gold uppercase tracking-wider mb-1">Ingreso Bruto Mensual Total</div>
+                                <div class="text-3xl md:text-5xl font-mono font-bold text-white" id="out-total-rev">$1,025,000,000</div>
+                            </div>
+                            <div class="text-left sm:text-right font-mono">
+                                <div class="text-xs text-gray-400">EBITDA ANUALIZADO</div>
+                                <div class="text-xl font-bold text-emerald" id="out-ebitda">$12.22B / año</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERMINAL DE LIQUIDACIÓN EN TIEMPO REAL -->
+    <section id="infraestructura" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+            <div>
+                <h2 class="text-3xl font-bold text-white mb-2">Libro Mayor de Compensación en Vivo</h2>
+                <p class="text-gray-400 text-sm">Flujo en tiempo real de liquidaciones soberanas y captura instantánea de comisiones.</p>
+            </div>
+            <div class="font-mono text-xs text-emerald bg-emerald/10 border border-emerald/20 px-3 py-1.5 rounded">
+                ESTADO DE RED: ÓPTIMO • 100% UPTIME
+            </div>
+        </div>
+
+        <div class="glass-panel rounded-xl overflow-hidden border border-white/10 font-mono text-xs">
+            <div class="grid grid-cols-5 bg-white/5 p-4 text-gray-400 font-semibold border-b border-white/10">
+                <div>HASH DE BLOQUE</div>
+                <div>ENTIDAD ORIGEN</div>
+                <div>ENTIDAD DESTINO</div>
+                <div class="text-right">MONTO LIQUIDADO</div>
+                <div class="text-right text-gold">COMISIÓN EXTRAÍDA</div>
+            </div>
+            <div id="ledger-feed" class="divide-y divide-white/5">
+                <!-- Filas generadas dinámicamente por JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/10 bg-obsidian py-12 text-xs text-gray-500 font-mono">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                © 2026 AETHERIA QUANTUM HOLDINGS. TODOS LOS DERECHOS RESERVADOS.
+            </div>
+            <div class="flex space-x-6">
+                <span>ZÚRICH</span>
+                <span>SINGAPUR</span>
+                <span>NUEVA YORK</span>
+                <span>LONDRES</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE ACCESO INSTITUCIONAL -->
+    <div id="auth-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel max-w-md w-full p-8 rounded-2xl border border-gold/30 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-mono text-lg">✕</button>
+            <div class="text-xs font-mono text-gold mb-2">VERIFICACIÓN DE CREDENCIALES TIER-1</div>
+            <h3 class="text-2xl font-bold text-white mb-2">Solicitar Nodo Soberano</h3>
+            <p class="text-gray-400 text-xs mb-6 leading-relaxed">
+                El acceso directo a la cámara de compensación requiere un balance mínimo auditado de $10,000,000,000 USD o estatus de Banco Central.
+            </p>
+            <form onsubmit="handleAuth(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-gray-400 mb-1">IDENTIFICADOR LEI (LEGAL ENTITY IDENTIFIER)</label>
+                    <input type="text" required placeholder="Ej. 5493006MHB84DD0ZWV18" class="w-full bg-obsidian border border-white/15 rounded px-3 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-gold">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-gray-400 mb-1">CORREO INSTITUCIONAL</label>
+                    <input type="email" required placeholder="tesoreria@institucion.global" class="w-full bg-obsidian border border-white/15 rounded px-3 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-gold">
+                </div>
+                <button type="submit" class="w-full bg-gold hover:bg-goldLight text-obsidian font-semibold py-3 rounded transition text-sm mt-2">
+                    Iniciar Protocolo de Enlace
+                </button>
+            </form>
+            <div id="auth-feedback" class="hidden mt-4 p-3 rounded bg-emerald/10 border border-emerald/30 text-emerald text-xs font-mono text-center">
+                Solicitud encriptada transmitida al Comité de Gobernanza en Zúrich.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Formateador de moneda USD
+        const formatUSD = (num) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0
+            }).format(num);
+        };
+
+        const formatUSDDecimals = (num) => {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(num);
+        };
+
+        // 1. Contador de ingresos en tiempo real (Hero)
+        let currentRevenue = 1042890412.80;
+        const revenueEl = document.getElementById('live-revenue');
+        const tickerVolEl = document.getElementById('ticker-vol');
+        const tickerRevEl = document.getElementById('ticker-rev');
+        let dailyVol = 48920410900;
+
+        setInterval(() => {
+            // Simula ~$400/segundo en comisiones (~$1.04B/mes)
+            const increment = (Math.random() * 650) + 180;
+            currentRevenue += increment;
+            dailyVol += (increment / 0.0015);
+            
+            revenueEl.textContent = formatUSDDecimals(currentRevenue);
+            tickerVolEl.textContent = formatUSD(dailyVol);
+            tickerRevEl.textContent = formatUSD(dailyVol * 0.0015);
+        }, 1000);
+
+        // 2. Lógica del Simulador Econométrico
+        const sliderVol = document.getElementById('slider-vol');
+        const sliderBps = document.getElementById('slider-bps');
+        const sliderInst = document.getElementById('slider-inst');
+
+        const valVol = document.getElementById('val-vol');
+        const valBps = document.getElementById('val-bps');
+        const valInst = document.getElementById('val-inst');
+
+        const outTxRev = document.getElementById('out-tx-rev');
+        const outSaasRev = document.getElementById('out-saas-rev');
+        const outTotalRev = document.getElementById('out-total-rev');
+        const outEbitda = document.getElementById('out-ebitda');
+
+        function updateSimulator() {
+            const dailyBillions = parseFloat(sliderVol.value); // en miles de millones ($B)
+            const bps = parseFloat(sliderBps.value); // puntos básicos
+            const institutions = parseInt(sliderInst.value);
+
+            valVol.textContent = `$${dailyBillions.toLocaleString()} Millones`;
+            valBps.textContent = `${bps} bps (${(bps / 100).toFixed(2)}%)`;
+            valInst.textContent = `${institutions} Entidades`;
+
+            // Cálculo mensual (30 días)
+            const monthlyVolume = dailyBillions * 1_000_000_000 * 30;
+            const txRevenue = monthlyVolume * (bps / 10000);
+            const saasRevenue = institutions * 3_500_000;
+            const totalMonthly = txRevenue + saasRevenue;
+            const annualEbitda = (totalMonthly * 12 * 0.994) / 1_000_000_000; // en Billones USD
+
+            outTxRev.textContent = formatUSD(txRevenue);
+            outSaasRev.textContent = formatUSD(saasRevenue);
+            outTotalRev.textContent = formatUSD(totalMonthly);
+            outEbitda.textContent = `$${annualEbitda.toFixed(2)}B / año`;
+        }
+
+        sliderVol.addEventListener('input', updateSimulator);
+        sliderBps.addEventListener('input', updateSimulator);
+        sliderInst.addEventListener('input', updateSimulator);
+        updateSimulator();
+
+        // 3. Libro Mayor en Vivo (Feed de Transacciones Institucionales)
+        const entities = [
+            "SNB-ZURICH", "FED-NY-DESK", "GIC-SINGAPORE", "NORGES-BANK", 
+            "ADIA-ABUDHABI", "BLACKROCK-ALADDIN", "CITADEL-EXEC", "JPM-ONYX-NODE",
+            "MAS-SETTLEMENT", "BOJ-TOKYO-01"
+        ];
+
+        const ledgerFeed = document.getElementById('ledger-feed');
+
+        function generateHash() {
+            const chars = '0123456789ABCDEF';
+            let hash = '0x';
+            for (let i = 0; i < 8; i++) hash += chars[Math.floor(Math.random() * 16)];
+            return hash + '...';
+        }
+
+        function addLedgerRow() {
+            const origin = entities[Math.floor(Math.random() * entities.length)];
+            let dest = entities[Math.floor(Math.random() * entities.length)];
+            while (dest === origin) dest = entities[Math.floor(Math.random() * entities.length)];
+
+            const amount = (Math.floor(Math.random() * 450) + 50) * 1_000_000; // $50M - $500M
+            const fee = amount * 0.0015;
+
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-5 p-4 items-center hover:bg-white/[0.02] transition duration-300';
+            row.innerHTML = `
+                <div class="text-gray-500">${generateHash()}</div>
+                <div class="text-white">${origin}</div>
+                <div class="text-gray-300">${dest}</div>
+                <div class="text-right text-white">${formatUSD(amount)}</div>
+                <div class="text-right text-gold font-semibold">+${formatUSD(fee)}</div>
+            `;
+
+            ledgerFeed.prepend(row);
+            if (ledgerFeed.children.length > 6) {
+                ledgerFeed.removeChild(ledgerFeed.lastChild);
+            }
+        }
+
+        // Inicializar filas
+        for (let i = 0; i < 6; i++) addLedgerRow();
+        setInterval(addLedgerRow, 2200);
+
+        // 4. Control del Modal
+        const modal = document.getElementById('auth-modal');
+        const feedback = document.getElementById('auth-feedback');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            feedback.classList.add('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        function handleAuth(e) {
+            e.preventDefault();
+            feedback.classList.remove('hidden');
+            setTimeout(() => {
+                closeModal();
+            }, 2200);
+        }
+    </script>
+</body>
+</html>
